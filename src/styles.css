@@ -1,0 +1,72 @@
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.container {
+  min-height: 100dvh;
+  padding: 16px;
+  background: var(--bg, #0f172a);
+  color: var(--text, #e2e8f0);
+  display: grid;
+  gap: 12px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.subtitle {
+  opacity: 0.9;
+}
+
+.card {
+  border: 1px solid color-mix(in srgb, var(--text, #e2e8f0) 20%, transparent);
+  border-radius: 12px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--bg, #0f172a) 70%, white 8%);
+}
+
+.big {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button,
+select {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+button {
+  background: var(--button, #2563eb);
+  color: white;
+}
+
+.tip {
+  margin-top: 8px;
+}
+
+ol,
+ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
