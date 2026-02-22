@@ -13,10 +13,17 @@ body {
 
 .container {
   min-height: 100dvh;
-  padding: 16px;
+  padding: 16px 16px 80px;
   background: var(--bg, #0f172a);
   color: var(--text, #e2e8f0);
   display: grid;
+  gap: 12px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -59,6 +66,55 @@ select {
 button {
   background: var(--button, #2563eb);
   color: white;
+  cursor: pointer;
+}
+
+.sos-button,
+.sos-floating {
+  background: #dc2626;
+}
+
+.sos-floating {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.sos-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  align-items: end;
+  padding: 16px;
+  background: rgba(2, 6, 23, 0.6);
+}
+
+.sos-sheet {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.sos-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--text, #e2e8f0) 25%, transparent);
+}
+
+.micro-step-picker {
+  margin-top: 10px;
+  display: grid;
+  gap: 6px;
 }
 
 .tip {
