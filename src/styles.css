@@ -22,6 +22,7 @@ body {
 
 h1,
 h2,
+h3,
 p {
   margin: 0;
 }
@@ -35,6 +36,8 @@ p {
   border-radius: 12px;
   padding: 12px;
   background: color-mix(in srgb, var(--bg, #0f172a) 70%, white 8%);
+  display: grid;
+  gap: 10px;
 }
 
 .big {
@@ -48,8 +51,21 @@ p {
   gap: 8px;
 }
 
+.column {
+  display: grid;
+  gap: 8px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 button,
-select {
+select,
+input,
+textarea {
   border: 0;
   border-radius: 10px;
   padding: 10px 12px;
@@ -61,8 +77,61 @@ button {
   color: white;
 }
 
+.tabs button {
+  opacity: 0.75;
+}
+
+.tabs button.active {
+  opacity: 1;
+  outline: 2px solid color-mix(in srgb, white 45%, transparent);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+}
+
+textarea {
+  min-height: 72px;
+  resize: vertical;
+}
+
 .tip {
-  margin-top: 8px;
+  margin-top: 4px;
+}
+
+.list {
+  display: grid;
+  gap: 8px;
+}
+
+.innerCard {
+  border: 1px solid color-mix(in srgb, var(--text, #e2e8f0) 15%, transparent);
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid color-mix(in srgb, var(--text, #e2e8f0) 18%, transparent);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.chip input {
+  width: auto;
+  margin: 0;
+}
+
+.stepItem {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 ol,
