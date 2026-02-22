@@ -35,6 +35,8 @@ p {
   border-radius: 12px;
   padding: 12px;
   background: color-mix(in srgb, var(--bg, #0f172a) 70%, white 8%);
+  display: grid;
+  gap: 10px;
 }
 
 .big {
@@ -45,6 +47,11 @@ p {
 .row {
   display: flex;
   flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stack {
+  display: grid;
   gap: 8px;
 }
 
@@ -61,8 +68,27 @@ button {
   color: white;
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
+.secondary {
+  text-align: left;
+  background: color-mix(in srgb, var(--bg, #0f172a) 70%, white 16%);
+  border: 1px solid color-mix(in srgb, var(--text, #e2e8f0) 30%, transparent);
+}
+
+.active {
+  outline: 2px solid color-mix(in srgb, var(--button, #2563eb) 70%, white 15%);
+}
+
 .tip {
-  margin-top: 8px;
+  margin-top: 4px;
+}
+
+.step {
+  opacity: 0.8;
+  font-size: 12px;
 }
 
 ol,
