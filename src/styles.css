@@ -70,3 +70,8 @@ ul {
   margin: 8px 0 0;
   padding-left: 18px;
 }
+
+.auth-error {
+  color: #fca5a5;
+  font-size: 14px;
+}

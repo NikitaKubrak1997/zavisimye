@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { init, miniApp, themeParams, viewport } from '@tma.js/sdk';
+import { validateSession } from './api';
 
 type Trigger = { id: string; label: string; suggestion: string };
 
@@ -17,11 +18,6 @@ const resources = [
   'Попроси близкого человека быть “контактом первой помощи”.',
 ];
 
-function getTelegramName(): string {
-  const unsafeUser = (window as Window & { Telegram?: any }).Telegram?.WebApp?.initDataUnsafe?.user;
-  return unsafeUser?.first_name ?? 'друг';
-}
-
 function getSavedDays(): number {
   const raw = localStorage.getItem('cleanDays');
   const parsed = Number(raw);
@@ -31,6 +27,8 @@ function getSavedDays(): number {
 export function App() {
   const [days, setDays] = useState<number>(getSavedDays);
   const [selectedTriggerId, setSelectedTriggerId] = useState<string>(triggers[0].id);
+  const [telegramName, setTelegramName] = useState<string>('друг');
+  const [authError, setAuthError] = useState<string>('');
 
   useEffect(() => {
     localStorage.setItem('cleanDays', String(days));
@@ -53,6 +51,17 @@ export function App() {
     }
   }, []);
 
+  useEffect(() => {
+    validateSession()
+      .then((data) => {
+        setTelegramName(data.user.first_name ?? 'друг');
+        setAuthError('');
+      })
+      .catch((error: Error) => {
+        setAuthError(error.message);
+      });
+  }, []);
+
   const tgThemeStyles = useMemo(() => {
     const bg = themeParams.bgColor() ?? '#0f172a';
     const text = themeParams.textColor() ?? '#e2e8f0';
@@ -70,7 +79,8 @@ export function App() {
   return (
     <main className="container" style={tgThemeStyles}>
       <h1>Опора</h1>
-      <p className="subtitle">Привет, {getTelegramName()}. Ты не один — маленькие шаги каждый день.</p>
+      <p className="subtitle">Привет, {telegramName}. Ты не один — маленькие шаги каждый день.</p>
+      {authError ? <p className="auth-error">Требуется вход через Telegram: {authError}</p> : null}
 
       <section className="card">
         <h2>Трезвые дни</h2>
